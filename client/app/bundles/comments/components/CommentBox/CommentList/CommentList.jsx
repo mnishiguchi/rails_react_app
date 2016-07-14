@@ -10,7 +10,7 @@ import BaseComponent from 'libs/components/BaseComponent';
 export default class CommentList extends BaseComponent {
   static propTypes = {
     $$comments: PropTypes.instanceOf(Immutable.List).isRequired,
-    error: PropTypes.any,
+    error:      PropTypes.any,
     cssTransitionGroupClassNames: PropTypes.object.isRequired,
   };
 

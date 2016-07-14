@@ -4,17 +4,22 @@ import request   from 'axios';
 import _         from 'lodash';
 
 import metaTagsManager from 'libs/metaTagsManager';
+
+// Child components.
 import CommentForm     from '../CommentBox/CommentForm/CommentForm';
 import CommentList     from '../CommentBox/CommentList/CommentList';
+
+// CSS for this component.
 import css             from './SimpleCommentScreen.scss';
+
 import BaseComponent   from 'libs/components/BaseComponent';
 
 export default class SimpleCommentScreen extends BaseComponent {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      $$comments: Immutable.fromJS([]),
-      isSaving: false,
+      $$comments:         Immutable.fromJS([]),
+      isSaving:           false,
       fetchCommentsError: null,
       submitCommentError: null,
     };
@@ -26,15 +31,19 @@ export default class SimpleCommentScreen extends BaseComponent {
     this._fetchComments();
   }
 
+  // Make a GET request to our Rails server.
   _fetchComments() {
     return (
       request
         .get('comments.json', { responseType: 'json' })
-        .then(res => this.setState({ $$comments: Immutable.fromJS(res.data.comments) }))
-        .catch(error => this.setState({ fetchCommentsError: error }))
+        .then(res =>
+          this.setState({ $$comments: Immutable.fromJS(res.data.comments) }))
+        .catch(error =>
+          this.setState({ fetchCommentsError: error }))
     );
   }
 
+  // Make a POST request to our Rails server.
   _handleCommentSubmit(comment) {
     this.setState({ isSaving: true });
 
@@ -50,11 +59,11 @@ export default class SimpleCommentScreen extends BaseComponent {
         .post('comments.json', { comment }, requestConfig)
         .then(() => {
           const { $$comments } = this.state;
-          const $$comment = Immutable.fromJS(comment);
+          const $$comment      = Immutable.fromJS(comment);
 
           this.setState({
             $$comments: $$comments.unshift($$comment),
-            isSaving: false,
+            isSaving:   false,
           });
         })
         .catch(error => {
