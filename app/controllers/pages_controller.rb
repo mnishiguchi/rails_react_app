@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   before_action :set_household_items
 
-  def estimate_moving
+  def react
   end
 
   private

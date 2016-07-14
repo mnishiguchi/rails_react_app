@@ -39,15 +39,15 @@ export default class HouseholdItemsList extends BaseComponent {
 
   render() {
     const { $$items, cssTransitionGroupClassNames } = this.props;
-    
+
     const itemNodes = $$items.map( $$item =>
-      <ListGroupItem>
+      <ListGroupItem key={$$item.get('id')}>
         <Row>
-          <Col sm={4}>{$$item.get('name')}</Col>
-          <Col sm={1}>{$$item.get('volume')}</Col>
-          <Col sm={1}>{$$item.get('quantity')}</Col>
-          <Col sm={2}>{$$item.get('tag')}</Col>
-          <Col sm={4}>{$$item.get('description')}</Col>
+          <Col xs={4}>{$$item.get('name')}</Col>
+          <Col xs={2}>{$$item.get('volume')}</Col>
+          <Col xs={1}>{$$item.get('quantity')}</Col>
+          <Col xs={2}>{$$item.get('tag')}</Col>
+          <Col xs={3}>{$$item.get('description')}</Col>
         </Row>
       </ListGroupItem>
     );
@@ -69,6 +69,15 @@ export default class HouseholdItemsList extends BaseComponent {
           className="householdItemsList"
           component="div"
         >
+          <ListGroupItem bsStyle="success">
+            <Row>
+              <Col xs={4}>Name</Col>
+              <Col xs={2}>ft3</Col>
+              <Col xs={1}>pcs</Col>
+              <Col xs={2}>Tag</Col>
+              <Col xs={3}></Col>
+            </Row>
+          </ListGroupItem>
           {itemNodes}
         </ReactCSSTransitionGroup>
       </ListGroup>

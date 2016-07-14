@@ -11,21 +11,20 @@ import _                       from 'lodash';
 
 import BaseComponent from 'libs/components/BaseComponent';
 
-const emptyComment    = { author: '', text: '' };
-const textPlaceholder = 'Say something using markdown...';
+const emptyItem = { name: '', volume: 0, quantity: 1, tag: '', description: '' };
 
 export default class CommentForm extends BaseComponent {
   static propTypes = {
     isSaving: PropTypes.bool.isRequired,
-    actions: PropTypes.object.isRequired,
-    error: PropTypes.any,
+    actions:  PropTypes.object.isRequired,
+    error:    PropTypes.any,
     cssTransitionGroupClassNames: PropTypes.object.isRequired,
   };
 
   constructor(props, context) {
     super(props, context);
     this.state = {
-      comment: emptyComment,
+      householdItem: emptyItem,
     };
 
     _.bindAll(this, [
@@ -36,19 +35,22 @@ export default class CommentForm extends BaseComponent {
   }
 
   _handleChange() {
-    let comment = {
-        author: this.refs.author.getValue(),
-        text:   this.refs.text.getValue(),
+    let householdItem = {
+        name:        this.refs.name.getValue(),
+        volume:      this.refs.volume.getValue(),
+        quantity:    this.refs.quantity.getValue(),
+        tag:         this.refs.tag.getValue(),
+        description: this.refs.description.getValue(),
     };
 
-    this.setState({ comment });
+    this.setState({ householdItem });
   }
 
   _handleSubmit(e) {
     e.preventDefault();
     const { actions } = this.props;
     actions
-      .submitComment(this.state.comment)
+      .submitItem(this.state.householdItem)
       .then(this._resetAndFocus);
   }
 
@@ -56,8 +58,8 @@ export default class CommentForm extends BaseComponent {
     // Don't reset a form that didn't submit, this results in data loss
     if (this.props.error) return;
 
-    const comment = { author: this.state.comment.author, text: '' };
-    this.setState({ comment });
+    const householdItem = { author: this.state.householdItem.author, text: '' };
+    this.setState({ householdItem });
 
     let ref = this.refs.text.getInputDOMNode();
     ref.focus();
@@ -67,22 +69,48 @@ export default class CommentForm extends BaseComponent {
     return (
       <div>
         <hr />
-        <form className="commentForm form" onSubmit={this._handleSubmit}>
+        <form className="householdItemForm form" onSubmit={this._handleSubmit}>
           <Input
             type="text"
-            label="Name"
-            placeholder="Your Name"
-            ref="author"
-            value={this.state.comment.author}
+            label="name"
+            placeholder="name"
+            ref="name"
+            value={this.state.householdItem.name}
+            onChange={this._handleChange}
+            disabled={this.props.isSaving}
+          />
+          <Input
+            type="number"
+            label="volume"
+            placeholder="volume"
+            ref="volume"
+            value={this.state.householdItem.volume}
+            onChange={this._handleChange}
+            disabled={this.props.isSaving}
+          />
+          <Input
+            type="number"
+            label="quantity"
+            placeholder="quantity"
+            ref="quantity"
+            value={this.state.householdItem.quantity}
+            onChange={this._handleChange}
+            disabled={this.props.isSaving}
+          />
+          <Input
+            type="text"
+            label="tag"
+            placeholder="tag"
+            ref="tag"
+            value={this.state.householdItem.tag}
             onChange={this._handleChange}
             disabled={this.props.isSaving}
           />
           <Input
             type="textarea"
-            label="Text"
-            placeholder={textPlaceholder}
-            ref="text"
-            value={this.state.comment.text}
+            label="description"
+            ref="description"
+            value={this.state.householdItem.description}
             onChange={this._handleChange}
             disabled={this.props.isSaving}
           />
@@ -101,9 +129,9 @@ export default class CommentForm extends BaseComponent {
     // If there is no error, there is nothing to add to the DOM
     if (!this.props.error) return null;
     return (
-      <Alert bsStyle="danger" key="commentSubmissionError">
-        <strong>Your comment was not saved! </strong>
-        A server error prevented your comment from being saved. Please try again.
+      <Alert bsStyle="danger" key="householdItemSubmissionError">
+        <strong>Your householdItem was not saved! </strong>
+        A server error prevented your householdItem from being saved. Please try again.
       </Alert>
     );
   }

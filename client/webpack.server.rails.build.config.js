@@ -11,8 +11,8 @@ module.exports = {
   // the project dir
   context: __dirname,
   entry: [
-    'babel-polyfill',
-    './app/bundles/comments/startup/serverRegistration',
+    'babel-polyfill'
+    // './app/bundles/comments/startup/serverRegistration',
   ],
   output: {
     filename: 'server-bundle.js',

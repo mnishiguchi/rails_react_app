@@ -1,5 +1,38 @@
 // Any non webpack assets can be imported here
 // Others will be served via webpack-dev-server
-.something {
-  color: pink;
+
+// Override BS navbar's styles.
+nav.navbar.navbar-inverse {
+  background-color: rgba(8, 32, 49, .9);
+}
+.navbar-inverse .navbar-nav > li > a {
+  transition: all 0.4s ease;
+  &:hover {
+    color: white;
+    background-color: rgba(255,255,255,.1);
+  }
+}
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 2.5rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  margin: 0 1rem 0 0;
+  padding: 1.5rem 0;
+  font-weight: bold;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+footer {
+  vertical-align: middle;
+  margin-top: 4rem;
+  padding: 4rem 0;
+  color: white;
+  background: rgba(8, 32, 49, .9);
 }

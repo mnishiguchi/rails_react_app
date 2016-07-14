@@ -1,10 +1,29 @@
 // Defining application SASS variables in stand-alone file,
 // so we can use them in bootstrap-loader and CSS Modules via sass-resources-loader
-$body-bg: #EFF8FB;                          // background w/ character
-$navbar-default-bg: #FFFFE0;                // fancy yellow navbar
-$font-size-base: 15px;                      // make it bigger!
-$font-family-sans-serif: 'OpenSans-Light';  // apply custom font
 
 // It will be used in SASS components imported as CSS Modules
-$comment-author-color: blue;
-$comment-text-color: purple;
+// Swatch
+$gray-1: #f1f1f1;
+$gray-2: #c1c1c1;
+$gray-3: #717171;
+$gray-4: #515151;
+$gray-5: #313131;
+
+$blue: #268bd2;
+$red: #ac4142;
+$orange: #d28445;
+$yellow: #f4bf75;
+$green: #90a959;
+$cyan: #75b5aa;
+$brown: #8f5536;
+
+// Configure colors for the app.
+$font-size-base: 16px;
+$font-family-sans-serif: 'OpenSans-Light';  // apply custom font
+$root-line-height: 1.6;
+
+$body-bg: #EFF8FB;
+$navbar-bg: rgba(8, 32, 49, .9);
+
+$large-breakpoint: 38em;
+$large-font-size: 20px;

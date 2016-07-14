@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  root "pages#estimate_moving"
-  get "estimate_moving", to: "pages#estimate_moving"
+  root "pages#react"
+  get "react", to: "pages#react"
 
   resources :household_items
 end

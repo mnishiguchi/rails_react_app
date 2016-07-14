@@ -3,10 +3,13 @@ import Immutable from 'immutable';
 import request   from 'axios';
 import _         from 'lodash';
 
+import Row       from 'react-bootstrap/lib/Row';
+import Col       from 'react-bootstrap/lib/Col';
+
 import metaTagsManager from 'libs/metaTagsManager';
 
 // Child components.
-// import HouseholdItemsForm from './HouseholdItemsBox/HouseholdItemsForm/HouseholdItemsForm';
+import HouseholdItemsForm from './HouseholdItemsBox/HouseholdItemsForm/HouseholdItemsForm';
 import HouseholdItemsList from './HouseholdItemsBox/HouseholdItemsList/HouseholdItemsList';
 
 // CSS for this component.
@@ -60,7 +63,7 @@ export default class HouseholdItems extends BaseComponent {
 
     return (
       request
-        .post('household_items.json', { item }, requestConfig)
+        .post('household_items.json', { household_item: item }, requestConfig)
         .then(() => {
           const { $$items } = this.state;
           const $$item      = Immutable.fromJS(item);
@@ -88,21 +91,28 @@ export default class HouseholdItems extends BaseComponent {
     };
 
     return (
-      <div className="itemBox container">
-        <h2>Items</h2>
+      <div>
+        <h2>
+          Household items
+        </h2>
 
-        {/*<HouseholdItemsForm
-          isSaving={this.state.isSaving}
-          actions={{ submitItem: this._handleItemSubmit }}
-          error={this.state.submitItemError}
-          cssTransitionGroupClassNames={cssTransitionGroupClassNames}
-        />*/}
-
-        <HouseholdItemsList
-          $$items={this.state.$$items}
-          error={this.state.fetchAllItemsError}
-          cssTransitionGroupClassNames={cssTransitionGroupClassNames}
-        />
+        <Row>
+          <Col sm={4}>
+            <HouseholdItemsForm
+              isSaving={this.state.isSaving}
+              actions={{ submitItem: this._handleItemSubmit }}
+              error={this.state.submitItemError}
+              cssTransitionGroupClassNames={cssTransitionGroupClassNames}
+            />
+          </Col>
+          <Col sm={8}>
+            <HouseholdItemsList
+              $$items={this.state.$$items}
+              error={this.state.fetchAllItemsError}
+              cssTransitionGroupClassNames={cssTransitionGroupClassNames}
+            />
+          </Col>
+        </Row>
       </div>
     );
   }

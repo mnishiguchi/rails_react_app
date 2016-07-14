@@ -1,0 +1,12 @@
+<h1>
+  Simple React
+  <small>
+    <%= p [controller.controller_name, controller.action_name].join '#' %>
+  </small>
+</h1>
+
+<hr>
+
+<%= react_component('HouseholdItems',
+      props: {},
+      prerender: false) %>
