@@ -20,6 +20,7 @@ gem "jbuilder"
 gem "rails-html-sanitizer"
 gem "react_on_rails", "~> 6"
 gem "sass-rails"
+gem 'simple_form', github: 'kesha-antonov/simple_form', branch: 'rails-5-0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem "sdoc", group: :doc
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

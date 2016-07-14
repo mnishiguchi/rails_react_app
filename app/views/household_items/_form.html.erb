@@ -1,0 +1,33 @@
+<%= simple_form_for(@household_item) do |f| %>
+  <% if @household_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@household_item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @household_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.input :name %>
+  </div>
+  <div class="field">
+    <%= f.input :volume %>
+  </div>
+  <div class="field">
+    <%= f.input :quantity %>
+  </div>
+  <div class="field">
+    <%= f.input :tag %>
+  </div>
+  <div class="field">
+    <%= f.input :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Add item' %>
+  </div>
+<% end %>

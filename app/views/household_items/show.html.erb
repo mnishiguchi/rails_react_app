@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @household_item.name %>
+</p>
+
+<p>
+  <strong>Volume:</strong>
+  <%= @household_item.volume %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @household_item.quantity %>
+</p>
+
+<p>
+  <strong>Tag:</strong>
+  <%= @household_item.tag %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @household_item.description %>
+</p>
+
+<%= link_to 'Edit', edit_household_item_path(@household_item) %> |
+<%= link_to 'Back', household_items_path %>

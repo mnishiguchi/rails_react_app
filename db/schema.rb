@@ -12,13 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20160714131024) do
 
-  create_table "comments", force: :cascade do |t|
-    t.string   "author",     default: "", null: false
-    t.text     "text",       default: "", null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
   create_table "household_items", force: :cascade do |t|
     t.string   "name",                      null: false
     t.float    "volume",      default: 0.0, null: false

@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
-  root "pages#simple"
-  get "simple",          to: "pages#simple"
+  root "pages#estimate_moving"
   get "estimate_moving", to: "pages#estimate_moving"
 
-  resources :comments
   resources :household_items
 end

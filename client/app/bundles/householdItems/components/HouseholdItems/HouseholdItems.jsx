@@ -6,15 +6,15 @@ import _         from 'lodash';
 import metaTagsManager from 'libs/metaTagsManager';
 
 // Child components.
-import CommentForm     from '../CommentBox/CommentForm/CommentForm';
-import CommentList     from '../CommentBox/CommentList/CommentList';
+import HouseholdItemsForm     from '../HouseholdItemsBox/HouseholdItemsForm/HouseholdItemsForm';
+import HouseholdItemsList     from '../HouseholdItemsBox/HouseholdItemsList/HouseholdItemsList';
 
 // CSS for this component.
-import css             from './SimpleCommentScreen.scss';
+import css             from './HouseholdItems.scss';
 
 import BaseComponent   from 'libs/components/BaseComponent';
 
-export default class SimpleCommentScreen extends BaseComponent {
+export default class HouseholdItems extends BaseComponent {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -90,13 +90,13 @@ export default class SimpleCommentScreen extends BaseComponent {
           Text take Github Flavored Markdown. Comments older than 24 hours are deleted.<br />
           <b>Name</b> is preserved. <b>Text</b> is reset, between submits.
         </p>
-        <CommentForm
+        <HouseholdItemsForm
           isSaving={this.state.isSaving}
           actions={{ submitComment: this._handleCommentSubmit }}
           error={this.state.submitCommentError}
           cssTransitionGroupClassNames={cssTransitionGroupClassNames}
         />
-        <CommentList
+        <HouseholdItemsList
           $$comments={this.state.$$comments}
           error={this.state.fetchCommentsError}
           cssTransitionGroupClassNames={cssTransitionGroupClassNames}
