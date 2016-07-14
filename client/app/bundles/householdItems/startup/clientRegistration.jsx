@@ -1,4 +1,4 @@
-import HouseholdItems from '../components/HouseholdItems/HouseholdItems';
+import HouseholdItems from '../components/HouseholdItems';
 import ReactOnRails from 'react-on-rails';
 
 ReactOnRails.setOptions({

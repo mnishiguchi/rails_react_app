@@ -1,16 +1,22 @@
 import React, { PropTypes }    from 'react';
 import Immutable               from 'immutable';
 import Alert                   from 'react-bootstrap/lib/Alert';
+import Row                     from 'react-bootstrap/lib/Row';
+import Col                     from 'react-bootstrap/lib/Col';
+import ListGroup               from 'react-bootstrap/lib/ListGroup';
+import ListGroupItem           from 'react-bootstrap/lib/ListGroupItem';
+
 import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 import _                       from 'lodash';
 
-import Comment       from './Comment/Comment';
+import HouseholdItem from './HouseholdItem/HouseholdItem';
+
 import BaseComponent from 'libs/components/BaseComponent';
 
-export default class CommentList extends BaseComponent {
+export default class HouseholdItemsList extends BaseComponent {
   static propTypes = {
-    $$comments: PropTypes.instanceOf(Immutable.List).isRequired,
-    error:      PropTypes.any,
+    $$items: PropTypes.instanceOf(Immutable.List).isRequired,
+    error:   PropTypes.any,
     cssTransitionGroupClassNames: PropTypes.object.isRequired,
   };
 
@@ -25,28 +31,29 @@ export default class CommentList extends BaseComponent {
     if (!this.props.error) return null;
     return (
       <Alert bsStyle="danger" key="commentFetchError">
-        <strong>Comments could not be retrieved. </strong>
+        <strong>HouseholdItems could not be retrieved. </strong>
         A server error prevented loading comments. Please try again.
       </Alert>
     );
   }
 
   render() {
-    const { $$comments, cssTransitionGroupClassNames } = this.props;
-    const commentNodes = $$comments.map($$comment =>
-
-      // `key` is a React-specific concept and is not mandatory for the
-      // purpose of this tutorial. if you're curious, see more here:
-      // http://facebook.github.io/react/docs/multiple-components.html#dynamic-children
-      <Comment
-        key={$$comment.get('id')}
-        author={$$comment.get('author')}
-        text={$$comment.get('text')}
-      />
+    const { $$items, cssTransitionGroupClassNames } = this.props;
+    
+    const itemNodes = $$items.map( $$item =>
+      <ListGroupItem>
+        <Row>
+          <Col sm={4}>{$$item.get('name')}</Col>
+          <Col sm={1}>{$$item.get('volume')}</Col>
+          <Col sm={1}>{$$item.get('quantity')}</Col>
+          <Col sm={2}>{$$item.get('tag')}</Col>
+          <Col sm={4}>{$$item.get('description')}</Col>
+        </Row>
+      </ListGroupItem>
     );
 
     return (
-      <div>
+      <ListGroup>
         <ReactCSSTransitionGroup
           transitionName={cssTransitionGroupClassNames}
           transitionEnterTimeout={500}
@@ -59,12 +66,12 @@ export default class CommentList extends BaseComponent {
           transitionName={cssTransitionGroupClassNames}
           transitionEnterTimeout={500}
           transitionLeaveTimeout={500}
-          className="commentList"
+          className="householdItemsList"
           component="div"
         >
-          {commentNodes}
+          {itemNodes}
         </ReactCSSTransitionGroup>
-      </div>
+      </ListGroup>
     );
   }
 }

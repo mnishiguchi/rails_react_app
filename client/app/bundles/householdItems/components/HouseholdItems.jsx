@@ -6,8 +6,8 @@ import _         from 'lodash';
 import metaTagsManager from 'libs/metaTagsManager';
 
 // Child components.
-import HouseholdItemsForm     from '../HouseholdItemsBox/HouseholdItemsForm/HouseholdItemsForm';
-import HouseholdItemsList     from '../HouseholdItemsBox/HouseholdItemsList/HouseholdItemsList';
+// import HouseholdItemsForm from './HouseholdItemsBox/HouseholdItemsForm/HouseholdItemsForm';
+import HouseholdItemsList from './HouseholdItemsBox/HouseholdItemsList/HouseholdItemsList';
 
 // CSS for this component.
 import css             from './HouseholdItems.scss';
@@ -18,33 +18,37 @@ export default class HouseholdItems extends BaseComponent {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      $$comments:         Immutable.fromJS([]),
+      $$items:            Immutable.fromJS([]),
       isSaving:           false,
-      fetchCommentsError: null,
-      submitCommentError: null,
+      fetchAllItemsError: null,
+      submitItemError:    null,
     };
 
-    _.bindAll(this, '_fetchComments', '_handleCommentSubmit');
+    _.bindAll(this, '_fetchAllItems', '_handleItemSubmit');
   }
 
   componentDidMount() {
-    this._fetchComments();
+    this._fetchAllItems();
   }
 
   // Make a GET request to our Rails server.
-  _fetchComments() {
+  _fetchAllItems() {
     return (
       request
-        .get('comments.json', { responseType: 'json' })
-        .then(res =>
-          this.setState({ $$comments: Immutable.fromJS(res.data.comments) }))
-        .catch(error =>
-          this.setState({ fetchCommentsError: error }))
+        .get('household_items.json', { responseType: 'json' })
+        .then(res => {
+          // console.log(res);
+          this.setState({ $$items: Immutable.fromJS(res.data) })
+        })
+        .catch(error => {
+          // console.log(error);
+          this.setState({ fetchAllItemsError: error })
+        })
     );
   }
 
   // Make a POST request to our Rails server.
-  _handleCommentSubmit(comment) {
+  _handleItemSubmit(item) {
     this.setState({ isSaving: true });
 
     const requestConfig = {
@@ -56,20 +60,20 @@ export default class HouseholdItems extends BaseComponent {
 
     return (
       request
-        .post('comments.json', { comment }, requestConfig)
+        .post('household_items.json', { item }, requestConfig)
         .then(() => {
-          const { $$comments } = this.state;
-          const $$comment      = Immutable.fromJS(comment);
+          const { $$items } = this.state;
+          const $$item      = Immutable.fromJS(item);
 
           this.setState({
-            $$comments: $$comments.unshift($$comment),
-            isSaving:   false,
+            $$items:  $$items.unshift($$item),
+            isSaving: false,
           });
         })
         .catch(error => {
           this.setState({
-            submitCommentError: error,
-            isSaving: false,
+            submitItemError: error,
+            isSaving:        false,
           });
         })
     );
@@ -84,21 +88,19 @@ export default class HouseholdItems extends BaseComponent {
     };
 
     return (
-      <div className="commentBox container">
-        <h2>Comments</h2>
-        <p>
-          Text take Github Flavored Markdown. Comments older than 24 hours are deleted.<br />
-          <b>Name</b> is preserved. <b>Text</b> is reset, between submits.
-        </p>
-        <HouseholdItemsForm
+      <div className="itemBox container">
+        <h2>Items</h2>
+
+        {/*<HouseholdItemsForm
           isSaving={this.state.isSaving}
-          actions={{ submitComment: this._handleCommentSubmit }}
-          error={this.state.submitCommentError}
+          actions={{ submitItem: this._handleItemSubmit }}
+          error={this.state.submitItemError}
           cssTransitionGroupClassNames={cssTransitionGroupClassNames}
-        />
+        />*/}
+
         <HouseholdItemsList
-          $$comments={this.state.$$comments}
-          error={this.state.fetchCommentsError}
+          $$items={this.state.$$items}
+          error={this.state.fetchAllItemsError}
           cssTransitionGroupClassNames={cssTransitionGroupClassNames}
         />
       </div>
