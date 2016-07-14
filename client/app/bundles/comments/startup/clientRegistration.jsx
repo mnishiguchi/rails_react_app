@@ -1,5 +1,4 @@
-import App from './ClientApp';
-import RouterApp from './ClientRouterApp';
+// import App from './ClientApp';
 import SimpleCommentScreen from '../components/SimpleCommentScreen/SimpleCommentScreen';
 import ReactOnRails from 'react-on-rails';
 
@@ -9,8 +8,6 @@ ReactOnRails.setOptions({
 
 ReactOnRails.register(
   {
-    App,
-    RouterApp,
-    SimpleCommentScreen,
+    SimpleCommentScreen
   }
 );
