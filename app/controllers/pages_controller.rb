@@ -4,6 +4,9 @@ class PagesController < ApplicationController
   def react
   end
 
+  def about
+  end
+
   private
 
     def set_household_items

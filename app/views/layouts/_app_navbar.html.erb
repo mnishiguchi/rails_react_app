@@ -12,11 +12,14 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="hamburger-toggle">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-left">
         <li class="active">
           <%= link_to "Simple React", react_path %>
         </li>
         <li><%= link_to "Classic Rails", household_items_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "About", about_path %></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
