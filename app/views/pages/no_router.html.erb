@@ -1,6 +1,11 @@
-<h2>Using React (Server rendering) + Redux + Rails Backend (using the
-  <a href="https://github.com/shakacode/react_on_rails">react_on_rails gem</a>)</h2>
-<%= render "header" %>
+<h1>
+  <%= p [controller.controller_name, controller.action_name].join '#' %>
+</h1>
 
-<%= react_component('App', props: render(template: "/comments/index.json.jbuilder"),
-    prerender: true) %>
+<p>Using React (Server rendering) + Redux + Rails Backend (using the
+  <a href="https://github.com/shakacode/react_on_rails">react_on_rails gem</a>)
+</p>
+
+<%= react_component('App',
+      props: render(template: "/comments/index.json.jbuilder"),
+      prerender: true) %>

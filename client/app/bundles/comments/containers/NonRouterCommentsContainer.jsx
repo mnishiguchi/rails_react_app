@@ -1,10 +1,10 @@
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
+import React, { PropTypes }   from 'react';
+import { connect }            from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import CommentScreen from '../components/CommentScreen/CommentScreen';
+import CommentScreen               from '../components/CommentScreen/CommentScreen';
 import * as commentsActionCreators from '../actions/commentsActionCreators';
-import BaseComponent from 'libs/components/BaseComponent';
+import BaseComponent               from 'libs/components/BaseComponent';
 
 function select(state) {
   // Which part of the Redux global state does our component want to receive as props?
@@ -14,12 +14,12 @@ function select(state) {
 class NonRouterCommentsContainer extends BaseComponent {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired,
+    data:     PropTypes.object.isRequired,
   };
 
   render() {
     const { dispatch, data } = this.props;
-    const actions = bindActionCreators(commentsActionCreators, dispatch);
+    const actions            = bindActionCreators(commentsActionCreators, dispatch);
     return (
       <CommentScreen {...{ actions, data }} />
     );

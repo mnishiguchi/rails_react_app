@@ -1,10 +1,10 @@
-import React, { PropTypes } from 'react';
-import Immutable from 'immutable';
-import Alert from 'react-bootstrap/lib/Alert';
+import React, { PropTypes }    from 'react';
+import Immutable               from 'immutable';
+import Alert                   from 'react-bootstrap/lib/Alert';
 import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
-import _ from 'lodash';
+import _                       from 'lodash';
 
-import Comment from './Comment/Comment';
+import Comment       from './Comment/Comment';
 import BaseComponent from 'libs/components/BaseComponent';
 
 export default class CommentList extends BaseComponent {

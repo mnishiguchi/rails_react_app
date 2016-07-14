@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import { IndexLink, Link } from 'react-router';
-import BaseComponent from 'libs/components/BaseComponent';
+import { IndexLink, Link }  from 'react-router';
+import BaseComponent        from 'libs/components/BaseComponent';
 
 import './Layout.scss';
 

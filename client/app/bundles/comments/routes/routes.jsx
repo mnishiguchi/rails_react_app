@@ -1,7 +1,7 @@
-import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-import Layout from '../layout/Layout';
-import TestReactRouter from '../components/TestReactRouter/TestReactRouter';
+import React                   from 'react';
+import { Route, IndexRoute }   from 'react-router';
+import Layout                  from '../layout/Layout';
+import TestReactRouter         from '../components/TestReactRouter/TestReactRouter';
 import TestReactRouterRedirect from '../components/TestReactRouterRedirect/TestReactRouterRedirect';
 import RouterCommentsContainer from '../containers/RouterCommentsContainer';
 

@@ -1,54 +1,38 @@
 source "https://rubygems.org"
 ruby "2.3.1"
 
-#
-# Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails"
 gem "listen"
-
-# Note: We're using sqllite3 for development and testing
+gem "puma"
 gem "sqlite3", group: [:development, :test]
 
 group :production do
-  # Pg is used for Heroku
-  gem "pg"
+  gem "pg"             # Pg is used for Heroku
   gem "rails_12factor" # Never include this for development or tests
 end
 
-gem "puma"
-
-# Use SCSS for stylesheets
-gem "sass-rails"
-# Use Uglifier as compressor for JavaScript assets
-gem "uglifier"
-# Use CoffeeScript for .js.coffee assets and views
+gem "autoprefixer-rails"
+gem "awesome_print"
 gem "coffee-rails"
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem "jbuilder"
+# Use Rails Html Sanitizer for HTML sanitization
+gem "rails-html-sanitizer"
+gem "react_on_rails", "~> 6"
+gem "sass-rails"
+# bundle exec rake doc:rails generates the API under doc/api.
+gem "sdoc", group: :doc
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+gem "therubyracer"
+gem "uglifier"
 
 # Turbolinks makes following links in your web application faster.
 # Read more: https://github.com/turbolinks/turbolinks
 # Get turbolinks from npm!
 # gem 'turbolinks', '>= 5.0.0.beta2'
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "jbuilder"
-
-# bundle exec rake doc:rails generates the API under doc/api.
-gem "sdoc", group: :doc
-
 # Use ActiveModel has_secure_password
 # gem "bcrypt", "~> 3.1.7"
-
-# Use Rails Html Sanitizer for HTML sanitization
-gem "rails-html-sanitizer"
-
-gem "react_on_rails", "~> 6"
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem "therubyracer"
-
-gem "autoprefixer-rails"
-
-gem "awesome_print"
 
 # jquery as the JavaScript library has been moved under /client and managed by npm.
 # It is critical to not include any of the jquery gems when following this pattern or

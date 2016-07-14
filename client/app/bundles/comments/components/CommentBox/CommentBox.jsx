@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 
-import CommentForm from './CommentForm/CommentForm';
-import CommentList from './CommentList/CommentList';
-import css from './CommentBox.scss';
+import CommentForm   from './CommentForm/CommentForm';
+import CommentList   from './CommentList/CommentList';
+import css           from './CommentBox.scss';
 import BaseComponent from 'libs/components/BaseComponent';
 
 export default class CommentBox extends BaseComponent {
@@ -25,9 +25,9 @@ export default class CommentBox extends BaseComponent {
   render() {
     const { actions, data } = this.props;
     const cssTransitionGroupClassNames = {
-      enter: css.elementEnter,
+      enter:       css.elementEnter,
       enterActive: css.elementEnterActive,
-      leave: css.elementLeave,
+      leave:       css.elementLeave,
       leaveActive: css.elementLeaveActive,
     };
 

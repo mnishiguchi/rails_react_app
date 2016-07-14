@@ -1,6 +1,6 @@
-# react-webpack-rails-tutorial
+# Rails React Webpack App
 
-This is a react on rails app base on [react-webpack-rails-tutorial](https://github.com/shakacode/react-webpack-rails-tutorial).
+This is a react on rails app base on [react-webpack-rails-tutorial](https://github.com/shakacode/react-webpack-rails-tutorial) using [react_on_rails](https://github.com/shakacode/react_on_rails/) gem.
 
 ## Getting Started
 
