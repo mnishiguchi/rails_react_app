@@ -9,8 +9,8 @@ import Col       from 'react-bootstrap/lib/Col';
 import metaTagsManager from 'libs/metaTagsManager';
 
 // Child components.
-import HouseholdItemsForm from './HouseholdItemsBox/HouseholdItemsForm/HouseholdItemsForm';
-import HouseholdItemsList from './HouseholdItemsBox/HouseholdItemsList/HouseholdItemsList';
+import HouseholdItemForm from './widgets/HouseholdItemForm/HouseholdItemForm';
+import HouseholdItemList from './widgets/HouseholdItemList/HouseholdItemList';
 
 // CSS for this component.
 import css             from './HouseholdItems.scss';
@@ -98,7 +98,7 @@ export default class HouseholdItems extends BaseComponent {
 
         <Row>
           <Col sm={4}>
-            <HouseholdItemsForm
+            <HouseholdItemForm
               isSaving={this.state.isSaving}
               actions={{ submitItem: this._handleItemSubmit }}
               error={this.state.submitItemError}
@@ -106,7 +106,7 @@ export default class HouseholdItems extends BaseComponent {
             />
           </Col>
           <Col sm={8}>
-            <HouseholdItemsList
+            <HouseholdItemList
               $$items={this.state.$$items}
               error={this.state.fetchAllItemsError}
               cssTransitionGroupClassNames={cssTransitionGroupClassNames}
