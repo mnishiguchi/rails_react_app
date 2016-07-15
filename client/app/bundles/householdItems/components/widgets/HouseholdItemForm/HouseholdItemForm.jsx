@@ -117,7 +117,7 @@ export default class CommentForm extends BaseComponent {
           <input
             type="submit"
             className="btn btn-primary"
-            value={this.props.isSaving ? 'Saving...' : 'Post'}
+            value={this.props.isSaving ? 'Saving...' : 'Add item'}
             disabled={this.props.isSaving}
           />
         </form>

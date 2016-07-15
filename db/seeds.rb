@@ -10,6 +10,8 @@
 #
 # ])
 
+HouseholdItem.destroy_all
+
 # Obtain data.
 items      = YAML.load_file("#{Rails.root}/db/household_items.yml")
 item_names = items.keys

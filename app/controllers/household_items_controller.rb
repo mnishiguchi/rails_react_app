@@ -14,11 +14,11 @@ class HouseholdItemsController < ApplicationController
 
   # GET /household_items/new
   def new
+    # For the form.
     @household_item = HouseholdItem.new
-  end
 
-  # GET /household_items/1/edit
-  def edit
+    # For the table.
+    @household_items = HouseholdItem.all.order('updated_at DESC')
   end
 
   # POST /household_items
@@ -28,13 +28,27 @@ class HouseholdItemsController < ApplicationController
 
     respond_to do |format|
       if @household_item.save
-        format.html { redirect_to @household_item, notice: "HouseholdItem was successfully created." }
+        format.html do
+          flash[:success] = "HouseholdItem was successfully created."
+          redirect_to new_household_item_url
+        end
         format.json { render :show, status: :created, location: @household_item }
       else
-        format.html { render :new }
+        format.html do
+          # For the table.
+          @household_items = HouseholdItem.all.order('updated_at DESC')
+
+          # Show the form with error messages.
+          flash.now[:danger] = @household_item.errors.full_messages.to_sentence
+          render :new
+        end
         format.json { render json: @household_item.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # GET /household_items/1/edit
+  def edit
   end
 
   # PATCH/PUT /household_items/1

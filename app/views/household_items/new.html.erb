@@ -1,5 +1,24 @@
-<h1>New Item</h1>
+<h1>
+  Classic Rails
+  <small>
+    <%= p [controller.controller_name, controller.action_name].join '#' %>
+  </small>
+</h1>
 
-<%= render 'form' %>
+<hr>
+
+<h2>
+  Add item
+</h2>
+
+<div class="row">
+  <div class="col-sm-4">
+    <hr>
+    <%= render 'form' %>
+  </div>
+  <div class="col-sm-8">
+    <%= render 'household_items' %>
+  </div>
+</div>
 
 <%= link_to 'Back', household_items_path %>

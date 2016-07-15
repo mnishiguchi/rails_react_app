@@ -93,7 +93,7 @@ export default class HouseholdItems extends BaseComponent {
     return (
       <div>
         <h2>
-          Household items
+          Add item
         </h2>
 
         <Row>
