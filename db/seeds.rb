@@ -5,23 +5,22 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-HouseholdItem.create!([
-  {
-   name:  "computer desk ", volume: 20, quantity: 1, description:  " ", tag: "my room", created_at:  "2016-07-11 13:31:36 ", updated_at:  "2016-07-11 13:31:36 " ,
-  },
-  {
-    name:  "sofa  3 seater ", volume: 60, quantity: 1, description:  " ", tag: "my room", created_at:  "2016-07-11 13:31:02 ", updated_at:  "2016-07-11 13:31:02 " ,
-  },
-  {
-     name:  "file 5 drawer ", volume: 1024, quantity: 1, description:  "Libero et vel adipisci eveniet quia incidunt totam... ", tag: "my room", created_at:  "2016-07-11 13:18:19 ", updated_at:  "2016-07-11 13:18:19 " ,
-  },
-  {
-     name:  "file 5 drawer ", volume: 1024, quantity: 1, description:  "Libero et vel adipisci eveniet quia incidunt totam... ", tag: "my room", created_at:  "2016-07-11 13:18:19 ", updated_at:  "2016-07-11 13:18:19 " ,
-  },
-  {
-      name:  "computer desk ", volume: 706, quantity: 2, description:  "Accusantium quam ea dolorem eius. ", tag: "my room", created_at:  "2016-07-11 13:18:19 ", updated_at:  "2016-07-11 13:18:19 "
-  },
-  {
-     name:  "file 5 drawer ", volume: 1024, quantity: 1, description:  "Libero et vel adipisci eveniet quia incidunt totam... ", tag: "my room", created_at:  "2016-07-11 13:18:19 ", updated_at:  "2016-07-11 13:18:19 "
-  }
-])
+
+# HouseholdItem.create!([
+#
+# ])
+
+# Obtain data.
+items      = YAML.load_file("#{Rails.root}/db/household_items.yml")
+item_names = items.keys
+tag_names  = ["kitchen", "living room", "bed room", "bathroom", "closet"]
+
+30.times do
+  name        = item_names.sample
+  volume      = items[name]
+  quantity    = [1,2,3,4].sample
+  tag         = tag_names.sample
+  description = ""
+  HouseholdItem.create!(name: name, volume: volume, quantity: quantity,
+                        tag: tag, description: description)
+end
