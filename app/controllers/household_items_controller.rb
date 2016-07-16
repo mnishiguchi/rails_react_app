@@ -18,26 +18,30 @@ class HouseholdItemsController < ApplicationController
     @household_item = HouseholdItem.new(household_item_params)
 
     respond_to do |format|
-      flash[:success] = "HouseholdItem was successfully created."
       if @household_item.save
-        format.html { redirect_back_or root_url }
-        format.js   { @household_item }
+        format.html do
+          flash[:success] = "HouseholdItem was successfully created."
+          redirect_back_or root_url
+        end
+        format.js do
+          # For ajax, use `flash.now`.
+          flash.now[:success] = "HouseholdItem was successfully created."
+          @household_item
+        end
         format.json { render :show, status: :created, location: @household_item }
       else
         format.html do
-          # Determine the template based on forwarding_url.
-          case session[:forwarding_url]
-          when rails_default_url then template = "pages/rails_default"
-          when rails_ajax_url    then template = "pages/rails_ajax"
-          else raise "Invalid forwarding url"
-          end
-
-          # For the table.
           @household_items = HouseholdItem.all.order('updated_at DESC')
 
           # Show the form with error messages.
           flash.now[:danger] = @household_item.errors.full_messages.to_sentence
-          render template
+
+          # Determine the template to be rendered based on forwarding_url.
+          case session[:forwarding_url]
+          when rails_default_url then render "pages/rails_default"
+          when rails_ajax_url    then render "pages/rails_ajax"
+          else raise "Invalid forwarding url"
+          end
         end
         format.json { render json: @household_item.errors, status: :unprocessable_entity }
       end
@@ -68,9 +72,10 @@ class HouseholdItemsController < ApplicationController
   def destroy
     @household_item.destroy
     respond_to do |format|
-      flash[:success] = "HouseholdItem was successfully destroyed."
-      format.html { redirect_to request.referrer || household_items_url }
-      format.js   {}
+      format.js do
+        # For ajax, use `flash.now`.
+        flash.now[:success] = "HouseholdItem was successfully destroyed."
+      end
       format.json { head :no_content }
     end
   end

@@ -1,10 +1,7 @@
-$(document).ready(function(){
+// Update the table.
+var $tbody        = $("#household_items__table tbody")
+var newRecordHTML = "<%= j render 'household_items/table_row', household_item: @household_item %>"
+$tbody.prepend(newRecordHTML)
 
-  // Update the table.
-  var $tbody        = $("#household_items__table tbody")
-  var newRecordHTML = "<%= j render 'household_items/table_row', household_item: @household_item %>"
-  $tbody.prepend(newRecordHTML)
-
-  // Update flash.
-  $('#flash_box').html("<%= j render 'layouts/flash' %>")
-})
+// Update flash.
+$('#flash_box').html("<%= j render 'layouts/flash' %>")

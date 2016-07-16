@@ -9,7 +9,6 @@ class PagesController < ApplicationController
     store_location
   end
 
-  # TODO
   def rails_ajax
     @household_item = HouseholdItem.new
     store_location

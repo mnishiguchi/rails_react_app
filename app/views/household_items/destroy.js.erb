@@ -1,0 +1,5 @@
+// Remove the deleted item from the table.
+$("#household_item-<%= @household_item.id %>").remove();
+
+// Update flash.
+$('#flash_box').html("<%= j render 'layouts/flash' %>")
