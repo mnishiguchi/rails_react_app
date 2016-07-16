@@ -5,11 +5,17 @@
   <div class="field">
     <%= f.input :name %>
   </div>
-  <div class="field">
-    <%= f.input :volume %>
-  </div>
-  <div class="field">
-    <%= f.input :quantity %>
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="field">
+        <%= f.input :volume, input_html: { min: '0', step: 'any', value: '0' } %>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div class="field">
+        <%= f.input :quantity, input_html: { min: '1', step: '1', value: '1' } %>
+      </div>
+    </div>
   </div>
   <div class="field">
     <%= f.input :tag %>

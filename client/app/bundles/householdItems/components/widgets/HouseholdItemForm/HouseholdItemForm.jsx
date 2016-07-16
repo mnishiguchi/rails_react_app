@@ -78,22 +78,28 @@ export default class CommentForm extends BaseComponent {
             onChange={this._handleChange}
             disabled={this.props.isSaving}
           />
-          <Input
-            type="number"
-            label="Volume"
-            ref="volume"
-            value={this.state.householdItem.volume}
-            onChange={this._handleChange}
-            disabled={this.props.isSaving}
-          />
-          <Input
-            type="number"
-            label="Quantity"
-            ref="quantity"
-            value={this.state.householdItem.quantity}
-            onChange={this._handleChange}
-            disabled={this.props.isSaving}
-          />
+          <Row>
+            <Col xs={6}>
+              <Input
+                type="number"
+                label="Volume"
+                ref="volume"
+                value={this.state.householdItem.volume}
+                onChange={this._handleChange}
+                disabled={this.props.isSaving}
+              />
+            </Col>
+            <Col xs={6}>
+              <Input
+                type="number"
+                label="Quantity"
+                ref="quantity"
+                value={this.state.householdItem.quantity}
+                onChange={this._handleChange}
+                disabled={this.props.isSaving}
+              />
+            </Col>
+          </Row>
           <Input
             type="text"
             label="Tag"
