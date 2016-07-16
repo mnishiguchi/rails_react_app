@@ -5,10 +5,6 @@
   </small>
 </h1>
 
-<div class="alert alert-info">
-  Under construction...
-</div>
-
 <hr>
 
 <h2>
@@ -18,9 +14,11 @@
 <div class="row">
   <div class="col-sm-4">
     <hr>
-    <%= render 'household_items/form', submit_text: "Add item" %>
+    <%= render 'household_items/form', submit_text: "Add item", remote: true %>
   </div>
   <div class="col-sm-8">
-    <%= render 'household_items/table' %>
+    <span id="household_items__table">
+      <%= render 'household_items/table', household_items: @household_items %>
+    </span>
   </div>
 </div>

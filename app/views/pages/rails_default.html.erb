@@ -17,6 +17,6 @@
     <%= render 'household_items/form', submit_text: "Add item" %>
   </div>
   <div class="col-sm-8">
-    <%= render 'household_items/table' %>
+    <%= render 'household_items/table', household_items: @household_items %>
   </div>
 </div>
