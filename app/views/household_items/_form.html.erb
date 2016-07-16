@@ -1,4 +1,5 @@
-<%= simple_form_for(@household_item) do |f| %>
+<% remote = false unless remote %>
+<%= simple_form_for(@household_item, remote: remote) do |f| %>
   <%= render 'shared/error_box', object: @household_item %>
 
   <div class="field">
