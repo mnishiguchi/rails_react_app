@@ -18,22 +18,14 @@ class HouseholdItemsController < ApplicationController
     @household_item = HouseholdItem.new(household_item_params)
 
     respond_to do |format|
+      flash[:success] = "HouseholdItem was successfully created."
       if @household_item.save
-        format.html do
-          flash[:success] = "HouseholdItem was successfully created."
-          redirect_back_or root_url
-        end
-
-        # Updating the table via ajax.
-        format.js {
-          flash.now[:success] = "HouseholdItem was successfully created."
-          @household_item
-        }
-
-        # Api for React.
+        format.html { redirect_back_or root_url }
+        format.js   { @household_item }
         format.json { render :show, status: :created, location: @household_item }
       else
         format.html do
+          # Determine the template based on forwarding_url.
           case session[:forwarding_url]
           when rails_default_url then template = "pages/rails_default"
           when rails_ajax_url    then template = "pages/rails_ajax"
@@ -61,10 +53,8 @@ class HouseholdItemsController < ApplicationController
   def update
     respond_to do |format|
       if @household_item.update(household_item_params)
-        format.html do
-          flash[:success] = "HouseholdItem was successfully updated."
-          redirect_to household_items_url
-        end
+        flash[:success] = "HouseholdItem was successfully updated."
+        format.html { redirect_to household_items_url }
         format.json { render :show, status: :ok, location: @household_item }
       else
         format.html { render :edit }
@@ -78,10 +68,9 @@ class HouseholdItemsController < ApplicationController
   def destroy
     @household_item.destroy
     respond_to do |format|
-      format.html do
-        flash[:success] = "HouseholdItem was successfully destroyed."
-        redirect_to request.referrer || household_items_url
-      end
+      flash[:success] = "HouseholdItem was successfully destroyed."
+      format.html { redirect_to request.referrer || household_items_url }
+      format.js   {}
       format.json { head :no_content }
     end
   end
