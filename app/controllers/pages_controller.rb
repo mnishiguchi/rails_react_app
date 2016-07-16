@@ -4,6 +4,17 @@ class PagesController < ApplicationController
   def react
   end
 
+  def rails_default
+    @household_item = HouseholdItem.new
+    store_location
+  end
+
+  # TODO
+  def rails_ajax
+    @household_item = HouseholdItem.new
+    store_location
+  end
+
   def about
   end
 

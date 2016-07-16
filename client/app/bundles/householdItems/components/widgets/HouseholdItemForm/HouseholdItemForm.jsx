@@ -72,8 +72,7 @@ export default class CommentForm extends BaseComponent {
         <form className="householdItemForm form" onSubmit={this._handleSubmit}>
           <Input
             type="text"
-            label="name"
-            placeholder="name"
+            label="Name"
             ref="name"
             value={this.state.householdItem.name}
             onChange={this._handleChange}
@@ -81,8 +80,7 @@ export default class CommentForm extends BaseComponent {
           />
           <Input
             type="number"
-            label="volume"
-            placeholder="volume"
+            label="Volume"
             ref="volume"
             value={this.state.householdItem.volume}
             onChange={this._handleChange}
@@ -90,8 +88,7 @@ export default class CommentForm extends BaseComponent {
           />
           <Input
             type="number"
-            label="quantity"
-            placeholder="quantity"
+            label="Quantity"
             ref="quantity"
             value={this.state.householdItem.quantity}
             onChange={this._handleChange}
@@ -99,8 +96,7 @@ export default class CommentForm extends BaseComponent {
           />
           <Input
             type="text"
-            label="tag"
-            placeholder="tag"
+            label="Tag"
             ref="tag"
             value={this.state.householdItem.tag}
             onChange={this._handleChange}
@@ -108,7 +104,7 @@ export default class CommentForm extends BaseComponent {
           />
           <Input
             type="textarea"
-            label="description"
+            label="Description"
             ref="description"
             value={this.state.householdItem.description}
             onChange={this._handleChange}

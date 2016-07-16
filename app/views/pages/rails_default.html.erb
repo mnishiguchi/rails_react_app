@@ -1,5 +1,5 @@
-<!-- <h1>
-  Classic Rails
+<h1>
+  Rails (Default)
   <small>
     <%= p [controller.controller_name, controller.action_name].join '#' %>
   </small>
@@ -14,9 +14,9 @@
 <div class="row">
   <div class="col-sm-4">
     <hr>
-    <%= render 'form' %>
+    <%= render 'household_items/form', submit_text: "Add item" %>
   </div>
   <div class="col-sm-8">
-    <%= render 'household_items' %>
+    <%= render 'household_items/table' %>
   </div>
-</div> -->
+</div>
