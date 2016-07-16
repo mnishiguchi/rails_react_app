@@ -78,10 +78,7 @@ class HouseholdItemsController < ApplicationController
   def destroy
     @household_item.destroy
     respond_to do |format|
-      format.html do
-        flash[:success] = "HouseholdItem was successfully destroyed."
-        redirect_to request.referrer || household_items_url
-      end
+      format.js {}
       format.json { head :no_content }
     end
   end
