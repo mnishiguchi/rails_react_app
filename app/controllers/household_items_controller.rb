@@ -12,15 +12,6 @@ class HouseholdItemsController < ApplicationController
   def show
   end
 
-  # GET /household_items/new
-  # def new
-  #   # For the form.
-  #   @household_item = HouseholdItem.new
-  #
-  #   # For the table.
-  #   @household_items = HouseholdItem.all.order('updated_at DESC')
-  # end
-
   # POST /household_items
   # POST /household_items.json
   def create
@@ -32,6 +23,14 @@ class HouseholdItemsController < ApplicationController
           flash[:success] = "HouseholdItem was successfully created."
           redirect_back_or root_url
         end
+
+        # Updating the table via ajax.
+        format.js {
+          flash.now[:success] = "HouseholdItem was successfully created."
+          @household_item
+        }
+
+        # Api for React.
         format.json { render :show, status: :created, location: @household_item }
       else
         format.html do
